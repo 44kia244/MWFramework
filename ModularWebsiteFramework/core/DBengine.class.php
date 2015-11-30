@@ -41,14 +41,16 @@
 				$param[0] = $type;
 				
 				if(count($SQLparam) > 0) call_user_func_array(array($this->stmt,"bind_param"),$param);
+				$exec_res = $this->stmt->execute();
 				$result = $this->stmt->get_result();
-				if($result != FALSE) {
+				if($result == FALSE) return $exec_res;
+				else {
 					$return = array();
 					while ($row = $result->fetch_row()) {
 						$return[] = $row;
 					}
 					return $return;
-				} else return $this->stmt->execute();
+				}
 			}
 		}
 	}
