@@ -1,2 +1,2 @@
-# ModularWebsiteFramework
+# MWFramework
 Modular Website Framework Development
