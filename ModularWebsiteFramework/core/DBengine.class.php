@@ -18,20 +18,38 @@
 ?>
 <?php
 	class DBengine {
+		// 
 		private $conn = NULL;
-		private $stmt = NULL;
 		
+		/**
+			Class Construct : Connect to MySQL
+		*/
 		public function __construct() {
 			$this->conn = new mysqli(BaseConfiguration::$MySQL["host"], BaseConfiguration::$MySQL["user"], BaseConfiguration::$MySQL["pass"], BaseConfiguration::$MySQL["db"]);
 		}
 		
+		/**
+			Class Destruct (End Of Process) : Close Connection
+		*/
 		public function __destruct() {
 			$this->conn->close();
 		}
 		
+		/**
+			$SQLquery
+				SQL Query String without parameter (use ? to mark parameter)
+				Ex. SELECT * FROM `users` WHERE `username` = ? AND `password` = ?
+			
+			$SQLparam
+				SQL Parameter as 2D Array
+				Ex. array(
+						array("s", "admin"),
+						array("s", "P4$sw0rd")
+				    )
+		*/
 		public function query($SQLquery, $SQLparam = array()) {
 			if ($this->conn->connect_errno) return FALSE;
-			if($this->stmt = $this->conn->prepare($SQLquery)) {
+			if($stmt = $this->conn->prepare($SQLquery)) {
 				$type = "";
 				$param = array("Initialize");
 				for($i=0;$i<count($SQLparam);$i++) {
@@ -40,9 +58,9 @@
 				}
 				$param[0] = $type;
 				
-				if(count($SQLparam) > 0) call_user_func_array(array($this->stmt,"bind_param"),$param);
-				$exec_res = $this->stmt->execute();
-				$result = $this->stmt->get_result();
+				if(count($SQLparam) > 0) call_user_func_array(array($stmt,"bind_param"),$param);
+				$exec_res = $stmt->execute();
+				$result = $stmt->get_result();
 				if($result == FALSE) return $exec_res;
 				else {
 					$return = array();
