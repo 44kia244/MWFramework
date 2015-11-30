@@ -1,5 +1,7 @@
 <?php
 	class Configuration extends BaseConfiguration {
-		public static $WebName = "TEST WEBSITE";
+		
 	}
+	
+	Configuration::$WebPath = dirname(dirname(__FILE__));
 ?>

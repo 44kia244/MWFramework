@@ -24,7 +24,7 @@
 	
 	class MWF_ViewLoader {
 		public static function Load($mod_id, $view_id) {
-			require(dirname(dirname(__FILE__)) . "/" . $mod_id . "/" . $view_id . ".php");
+			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id . ".php"); // DUMMY TEMPOLARY CODE
 		}
 	}
 ?>

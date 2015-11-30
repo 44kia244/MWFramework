@@ -18,6 +18,9 @@
 ?>
 <?php
 	class BaseConfiguration {
-		public static $WebPath = "C:\\Apache24\\htdocs\\ModularWebsiteFramework";
+		public static $WebPath = "";
+		public static $WebName = "TEST WEBSITE";
 	}
+	
+	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
 ?>
