@@ -17,9 +17,39 @@
 	****************************************************************************************/
 ?>
 <?php
-	class Configuration extends BaseConfiguration {
+	class DBengine {
+		private $conn = NULL;
+		private $stmt = NULL;
 		
+		public function __construct() {
+			$this->conn = new mysqli(BaseConfiguration::$MySQL["host"], BaseConfiguration::$MySQL["user"], BaseConfiguration::$MySQL["pass"], BaseConfiguration::$MySQL["db"]);
+		}
+		
+		public function __destruct() {
+			$this->conn->close();
+		}
+		
+		public function query($SQLquery, $SQLparam = array()) {
+			if ($this->conn->connect_errno) return FALSE;
+			if($this->stmt = $this->conn->prepare($SQLquery)) {
+				$type = "";
+				$param = array("Initialize");
+				for($i=0;$i<count($SQLparam);$i++) {
+					$type .= $SQLparam[$i][0];
+					$param[] = &$SQLparam[$i][1];
+				}
+				$param[0] = $type;
+				
+				if(count($SQLparam) > 0) call_user_func_array(array($this->stmt,"bind_param"),$param);
+				$result = $this->stmt->get_result();
+				if($result != FALSE) {
+					$return = array();
+					while ($row = $result->fetch_row()) {
+						$return[] = $row;
+					}
+					return $return;
+				} else return $this->stmt->execute();
+			}
+		}
 	}
-	
-	Configuration::$WebPath = dirname(dirname(__FILE__));
 ?>

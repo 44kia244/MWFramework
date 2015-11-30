@@ -20,6 +20,12 @@
 	class BaseConfiguration {
 		public static $WebPath = "";
 		public static $WebName = "TEST WEBSITE";
+		public static $MySQL = array(
+			"host" => "localhost"
+			"user" => "root"
+			"pass" => "1234"
+			"db"   => "mwf_db"
+		);
 	}
 	
 	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
