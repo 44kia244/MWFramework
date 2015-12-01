@@ -22,7 +22,7 @@
 		private $conn = NULL;
 		
 		/**
-			Class Construct : Connect to MySQL
+			Class Construct : Connect to SQLite3
 		*/
 		public function __construct($filename) {
 			$this->conn = new SQLite3(empty(trim($filename)) ? trim($filename) : ":memory:");
@@ -60,7 +60,6 @@
 				
 				if(count($SQLparam) > 0) call_user_func_array(array($stmt,"bind_param"),$param);
 				$result = $stmt->execute();
-				
 				if($result == FALSE) return $result;
 				else {
 					$return = array();

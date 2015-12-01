@@ -20,29 +20,31 @@
 	class ClassFinder {
 		private static $cache = NULL;
 		
-		public static function readDirectory($dirname = ".", $isOuter = TRUE) {
-			if(self::$cache != NULL && $isOuter) return self::$cache;
-			
+		public static function listClasses($dirname = ".") {
+			if(self::$cache == NULL) self::$cache = $this->readDirectory($dirname);
+			return self::$cache;
+		}
+		
+		private function readDirectory($dirname = ".", $isOuter = TRUE) {
 			$ret = array();
 			
 			$dir = opendir($dirname);
 			while(($row = readdir($dir)) !== FALSE) {
 				if($row != "." && $row != "..") {
-					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, self::readDirectory($dirname."/".$row, FALSE));
+					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, $this->readDirectory($dirname."/".$row, FALSE));
 					else {
 						if(preg_match("/.+\\.class\\.php/", $row)) $ret[$row] = $dirname."/".$row;
 					}
 				}
 			} closedir($dir);
 			
-			if($isOuter) self::$cache = $ret;
 			return $ret;
 		}
 	}
 	
 	function __autoload($classname) {
 		$dirname = dirname(dirname(__FILE__));
-		$allowed_class = ClassFinder::readDirectory($dirname);
+		$allowed_class = ClassFinder::listClasses($dirname);
 		
 		$classname .= ".class.php";
 		if(array_key_exists($classname, $allowed_class)) {
