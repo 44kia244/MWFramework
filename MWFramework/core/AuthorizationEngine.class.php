@@ -18,6 +18,8 @@
 ?>
 <?php
 	class AuthorizationEngine {
-		
+		public function __construct() {
+			
+		}
 	}
 ?>
