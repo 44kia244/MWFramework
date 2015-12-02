@@ -21,17 +21,17 @@
 		private static $cache = NULL;
 		
 		public static function listClasses($dirname = ".") {
-			if(self::$cache == NULL) self::$cache = $this->readDirectory($dirname);
+			if(self::$cache == NULL) self::$cache = self::readDirectory($dirname);
 			return self::$cache;
 		}
 		
-		private function readDirectory($dirname = ".", $isOuter = TRUE) {
+		private static function readDirectory($dirname = ".", $isOuter = TRUE) {
 			$ret = array();
 			
 			$dir = opendir($dirname);
 			while(($row = readdir($dir)) !== FALSE) {
 				if($row != "." && $row != "..") {
-					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, $this->readDirectory($dirname."/".$row, FALSE));
+					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, self::readDirectory($dirname."/".$row, FALSE));
 					else {
 						if(preg_match("/.+\\.class\\.php/", $row)) $ret[$row] = $dirname."/".$row;
 					}
