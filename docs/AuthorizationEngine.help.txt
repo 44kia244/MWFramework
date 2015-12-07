@@ -27,11 +27,46 @@
 /* ============================================== Public Method ============================================== */
 
 	public function __construct() 
+		Class Constructor, Initialize $this->DB as DBengine Object
+	
 	public function getGroupList() 
+		Get List of Available Groups
+			Return : 2D Array of 2-column (ID, Name), n-row of Group List
+	
 	public function getGroupPermList($G_ID) 
+		Get List of Authorized Permission of Given Group ID
+			$G_ID = Group ID
+			Return : 2D Array of 2-column (ID, Description), n-row of Group Permission
+	
 	public function getGroupInfo($G_ID) 
+		Get Group Information (ID, Name) of Given Group ID
+			$G_ID = Group ID
+			Return : 2D Array of 2-column (ID, Name), 1-row of Group Information, or empty 2D Array if Not found.
+	
 	public function getPermissionInfo($P_ID) 
+		Get Permission Information (ID, Description) of Given Permission ID
+			$P_ID = Permission ID
+			Return : 2D Array of 2-column (ID, Description), 1-row of Permission Information, or empty 2D Array if Not found.
+	
 	public function isAuthorized($G_ID, $P_ID) 
+		Check If Given Group ID is Authorized for Given Permission ID or not
+			$G_ID = Group ID
+			$P_ID = Permission ID
+			Return : TRUE if authorized, Otherwise FALSE
+	
 	public function addGroup($G_NAME) 
+		Add a new Group with Given Group Name
+			$G_NAME = Group Name
+			Return : TRUE if add success, otherwise FALSE
+	
 	public function addPermission($P_DESC) 
+		Add a new Permission with Given Permission Description
+			$P_DESC = Permission Description
+			Return : TRUE if add success, otherwise FALSE
+	
 	public function authorize($G_ID, $P_ID) 
+		Authorize a Permission for Given Group ID
+			$G_ID = Group ID
+			$P_ID = Permission ID
+			Return : TRUE if authorize success, otherwise FALSE
+			

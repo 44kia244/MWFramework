@@ -60,7 +60,7 @@
 				)
 			);
 			
-			return $T[0][0];
+			return $T[0][0] == 1;
 		}
 		
 		public function addGroup($G_NAME) {
