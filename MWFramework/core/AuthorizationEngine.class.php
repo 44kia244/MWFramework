@@ -52,25 +52,49 @@
 			)) == 1;
 		}
 		
-		public function isHasPermission($G_ID, $P_ID) {
-			return count($this->DB->query("SELECT P_ID, P_DESC FROM GROUPS G JOIN PERMISSIONS P ON (P.P_ID = G.G_ID) WHERE G.G_ID = ? AND G.P_ID = ?",
+		public function isHasPermission($P_ID) {
+			return count($this->DB->query("SELECT P_ID FROM PERMISSIONS WHERE P_ID = ?",
 				array(
-					array("i", $G_ID),
 					array("i", $P_ID)
 				)
 			)) == 1;
 		}
 		
-		public function addGroup($G_NAME) {
+		public function isAuthorized($G_ID, $P_ID) {
+			$T = $this->DB->query("SELECT COUNT(*) FROM AUTHORIZATION A JOIN PERMISSIONS P ON (P.P_ID = A.P_ID) WHERE A.G_ID = ? AND G.P_ID = ?",
+				array(
+					array("i", $G_ID),
+					array("i", $P_ID)
+				)
+			);
 			
+			return $T[0][0];
 		}
 		
-		public function addPermission($P_ID) {
-			
+		public function addGroup($G_NAME) {
+			return $this->DB->query("INSERT INTO GROUPS (G_NAME) VALUES (?)",
+				array(
+					array("s", $G_NAME)
+				)
+			);
+		}
+		
+		public function addPermission($P_DESC) {
+			return $this->DB->query("INSERT INTO PERMISSIONS (P_DESC) VALUES (?)",
+				array(
+					array("s", $P_DESC)
+				)
+			);
 		}
 		
 		public function authorize($G_ID, $P_ID) {
-			
+			if(!($this->isHasGroup($G_ID) && $this->isHasPermission($P_ID))) return FALSE;
+			return $this->DB->query("INSERT INTO AUTHORIZATION (G_ID, P_ID) VALUES (?, ?)",
+				array(
+					array("i", $G_ID),
+					array("i", $P_ID)
+				)
+			);
 		}
 	}
 ?>
