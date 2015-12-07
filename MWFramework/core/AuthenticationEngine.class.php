@@ -80,7 +80,7 @@
 						array("s", $this->mkpassword($username, $newpassword))
 					)
 				);
-			}
+			} return FALSE;
 		}
 		
 		private function mkusername($username) {
