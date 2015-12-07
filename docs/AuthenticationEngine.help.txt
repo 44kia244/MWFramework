@@ -1,86 +1,85 @@
-/****************************************************************************
-*    This file is part of MWFramework.                                       *
-*                                                                            *
-*    MWFramework is free software: you can redistribute it and/or modify     *
-*    it under the terms of the GNU General Public License as published by    *
-*    the Free Software Foundation, either version 3 of the License, or       *
-*    (at your option) any later version.                                     *
-*                                                                            *
-*    MWFramework is distributed in the hope that it will be useful,          *
-*    but WITHOUT ANY WARRANTY; without even the implied warranty of          *
-*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
-*    GNU General Public License for more details.                            *
-*                                                                            *
-*    You should have received a copy of the GNU General Public License       *
-*    along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.    *
-****************************************************************************/
+*****************************************************************************
+*    This file is part of MWFramework.                                      *
+*                                                                           *
+*    MWFramework is free software: you can redistribute it and/or modify    *
+*    it under the terms of the GNU General Public License as published by   *
+*    the Free Software Foundation, either version 3 of the License, or      *
+*    (at your option) any later version.                                    *
+*                                                                           *
+*    MWFramework is distributed in the hope that it will be useful,         *
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of         *
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
+*    GNU General Public License for more details.                           *
+*                                                                           *
+*    You should have received a copy of the GNU General Public License      *
+*    along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.   *
+*****************************************************************************
 
-AuthenticationEngine Class
-	- Manage Credentials
-	- Manage Session
-	- Authenticate User
-	
-	* No User Information included in this engine, extends it for more features.
+/* =============================================== AuthenticationEngine Class =============================================== */
+    - Manage Credentials
+    - Manage Session
+    - Authenticate User
+    
+    * No User Information included in this engine, extends it for more features.
 
-/* Private Data Field */
+/* =================================================== Private Data Field =================================================== */
     private $DB;
         DBengine Object for Credentials Storage (Initialized at Construct)
     
     private $login;
         Login Session, Sync with $_SESSION["login"]
     
-
-/* Private Method */
+/* ===================================================== Private Method ===================================================== */
     private function check_login($username, $password)
-      Check Credentials If it Correct or Wrong
-        $username = User-Input Username
-        $password = User-Input Password
-        Return : Check OK = TRUE, Otherwise FALSE
+        Check Credentials If it Correct or Wrong
+            $username = User-Input Username
+            $password = User-Input Password
+            Return : Check OK = TRUE, Otherwise FALSE
         
     private function mkusername($username)
-      Process User-Input Username
-        $username = User-Input Username
-        Return : Processed Username
+        Process User-Input Username
+            $username = User-Input Username
+            Return : Processed Username
         
     private function mkpass($username, $password)
-      Process User-Input Password 
-        $username = User-Input Username
-        $password = User-Input Password
-        Return : Processed Password
+        Process User-Input Password 
+            $username = User-Input Username
+            $password = User-Input Password
+            Return : Processed Password
         
     private function session_sync()
-      Sync $this->login from $_SESSION["login"]
-        Return : No Return
+        Sync $this->login from $_SESSION["login"]
+            Return : No Return
 
-/* Public Method */
+/* ===================================================== Public  Method ===================================================== */
     public function __construct()
-      Class Constructor, Initialize $this->DB as DBengine Object
+        Class Constructor, Initialize $this->DB as DBengine Object
       
     public function login($username, $password)
-      Login and create session if login ok
-        $username = User-Input Username
-        $password = User-Input Password
-        Return : Check OK = TRUE, Otherwise FALSE
+        Login and create session if login ok
+            $username = User-Input Username
+            $password = User-Input Password
+            Return : Check OK = TRUE, Otherwise FALSE
         
     public function logout()
-      Logout and Destroy session
-        Return : No Return
+        Logout and Destroy session
+            Return : No Return
       
     public function register($username, $password)
-      Register new credential
-        $username = User-Input Username
-        $password = User-Input Password
-        Return: TRUE if register OK, otherwise FALSE
+        Register new credential
+            $username = User-Input Username
+            $password = User-Input Password
+            Return: TRUE if register OK, otherwise FALSE
       
     public function getuserdata($username)
-      Get Everything from record for username
-        $username = User-Input Username
-        Return : User Data as 1-row 2D Array
+        Get Everything from record for username
+            $username = User-Input Username
+            Return : User Data as 1-row 2D Array
         
     public function changepassword($username, $password, $newpassword)
-      Change password of a user
-	    $username = User-Input Username
-        $password = User-Input Password
-		$newpassword = User-Input New Password
-		Return : TRUE if change password success, otherwise FALSE
+        Change password of a user
+            $username = User-Input Username
+            $password = User-Input Password
+            $newpassword = User-Input New Password
+            Return : TRUE if change password success, otherwise FALSE
     
