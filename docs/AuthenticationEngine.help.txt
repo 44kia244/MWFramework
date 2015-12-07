@@ -15,6 +15,13 @@
 *    along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.    *
 ****************************************************************************/
 
+AuthenticationEngine Class
+	- Manage Credentials
+	- Manage Session
+	- Authenticate User
+	
+	* No User Information included in this engine, extends it for more features.
+
 /* Private Data Field */
     private $DB;
         DBengine Object for Credentials Storage (Initialized at Construct)
