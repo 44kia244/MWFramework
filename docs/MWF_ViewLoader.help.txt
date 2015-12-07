@@ -17,16 +17,24 @@
 	****************************************************************************/
 ?>
 <?php
-	class BaseConfiguration {
-		public static $WebPath = "";
-		public static $WebName = "TEST WEBSITE";
-		public static $MySQL = array(
-			"host" => "localhost",
-			"user" => "root",
-			"pass" => "1234",
-			"db"   => "mwf_db"
-		);
-	}
+	/***************************************
+	* Modular Website Framework ViewLoader *
+	*   Input = Module ID, View ID         *
+	***************************************/
 	
-	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
+	class MWF_ViewLoader {
+		
+		/**
+			Load View
+			
+			$mod_id
+				module name
+				
+			$view_id
+				view filename
+		*/
+		public static function Load($mod_id, $view_id) {
+			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id . ".php"); // DUMMY TEMPOLARY CODE
+		}
+	}
 ?>

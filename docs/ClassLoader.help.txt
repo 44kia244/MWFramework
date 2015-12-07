@@ -17,16 +17,38 @@
 	****************************************************************************/
 ?>
 <?php
-	class BaseConfiguration {
-		public static $WebPath = "";
-		public static $WebName = "TEST WEBSITE";
-		public static $MySQL = array(
-			"host" => "localhost",
-			"user" => "root",
-			"pass" => "1234",
-			"db"   => "mwf_db"
-		);
+	class ClassFinder {
+		private static $cache = NULL;
+		
+		public static function listClasses($dirname = ".") {
+			if(self::$cache == NULL) self::$cache = self::readDirectory($dirname);
+			return self::$cache;
+		}
+		
+		private static function readDirectory($dirname = ".", $isOuter = TRUE) {
+			$ret = array();
+			
+			$dir = opendir($dirname);
+			while(($row = readdir($dir)) !== FALSE) {
+				if($row != "." && $row != "..") {
+					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, self::readDirectory($dirname."/".$row, FALSE));
+					else {
+						if(preg_match("/.+\\.class\\.php/", $row)) $ret[$row] = $dirname."/".$row;
+					}
+				}
+			} closedir($dir);
+			
+			return $ret;
+		}
 	}
 	
-	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
+	function __autoload($classname) {
+		$dirname = dirname(dirname(__FILE__));
+		$allowed_class = ClassFinder::listClasses($dirname);
+		
+		$classname .= ".class.php";
+		if(array_key_exists($classname, $allowed_class)) {
+			require_once($allowed_class[$classname]);
+		} else die("Error Loading Resource " . $allowed_class[$classname]);
+	}
 ?>

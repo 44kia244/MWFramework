@@ -1,0 +1,42 @@
+/****************************************************************************
+*	This file is part of MWFramework.                                       *
+*	                                                                        *
+*	MWFramework is free software: you can redistribute it and/or modify     *
+*	it under the terms of the GNU General Public License as published by    *
+*	the Free Software Foundation, either version 3 of the License, or       *
+*	(at your option) any later version.                                     *
+*	                                                                        *
+*	MWFramework is distributed in the hope that it will be useful,          *
+*	but WITHOUT ANY WARRANTY; without even the implied warranty of          *
+*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the           *
+*	GNU General Public License for more details.                            *
+*	                                                                        *
+*	You should have received a copy of the GNU General Public License       *
+*	along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.    *
+****************************************************************************/
+
+/* Private Data Field */
+	private $DB;
+		DBengine Object for Credentials Storage (Initialized at Construct)
+	
+	private $login;
+		Login Session, Sync with $_SESSION["login"]
+	
+
+/* Private Method */
+	private function check_login($username, $password)
+		$username = User-Input Username
+		$password = User-Input Password
+		Return : Check OK = TRUE, Otherwise FALSE
+	private function mkusername($username)
+	private function mkpass($username, $password)
+	private function session_sync()
+
+/* Public Method */
+	public function __construct()
+	public function login($username, $password)
+	public function logout()
+	public function register($username, $password)
+	public function getuserdata($username)
+	public function changepassword($username, $password, $newpassword)
+	

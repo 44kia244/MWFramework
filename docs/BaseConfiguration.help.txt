@@ -21,9 +21,9 @@
 		public static $WebPath = "";
 		public static $WebName = "TEST WEBSITE";
 		public static $MySQL = array(
-			"host" => "localhost",
-			"user" => "root",
-			"pass" => "1234",
+			"host" => "localhost"
+			"user" => "root"
+			"pass" => "1234"
 			"db"   => "mwf_db"
 		);
 	}
