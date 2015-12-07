@@ -28,14 +28,6 @@
 			return $this->DB->query("SELECT G_ID, G_NAME FROM GROUPS");
 		}
 		
-		public function getGroupInfo($G_ID) {
-			return $this->DB->query("SELECT G_ID, G_NAME FROM GROUPS WHERE G_ID = ?",
-				array(
-					array("i", $G_ID)
-				)
-			);
-		}
-		
 		public function getGroupPermList($G_ID) {
 			return $this->DB->query("SELECT P_ID, P_DESC FROM GROUPS G JOIN PERMISSIONS P ON (P.P_ID = G.G_ID) WHERE G.G_ID = ?",
 				array(
@@ -44,20 +36,20 @@
 			);
 		}
 		
-		public function isHasGroup($G_ID) {
-			return count($this->DB->query("SELECT G_ID FROM GROUPS WHERE G_ID = ?",
+		public function getGroupInfo($G_ID) {
+			return $this->DB->query("SELECT G_ID, G_NAME FROM GROUPS WHERE G_ID = ?",
 				array(
 					array("i", $G_ID)
 				)
-			)) == 1;
+			);
 		}
 		
-		public function isHasPermission($P_ID) {
-			return count($this->DB->query("SELECT P_ID FROM PERMISSIONS WHERE P_ID = ?",
+		public function getPermissionInfo($P_ID) {
+			return $this->DB->query("SELECT P_ID, P_DESC FROM PERMISSIONS WHERE P_ID = ?",
 				array(
 					array("i", $P_ID)
 				)
-			)) == 1;
+			);
 		}
 		
 		public function isAuthorized($G_ID, $P_ID) {
