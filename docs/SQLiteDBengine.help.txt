@@ -14,59 +14,30 @@
 *    You should have received a copy of the GNU General Public License       *
 *    along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.    *
 ****************************************************************************/
-<?php
-	class DBengine {
-		// 
-		private $conn = NULL;
-		
-		/**
-			Class Construct : Connect to SQLite3
-		*/
-		public function __construct($filename) {
-			$this->conn = new SQLite3(empty(trim($filename)) ? trim($filename) : ":memory:");
-		}
-		
-		/**
-			Class Destruct (End Of Process) : Close Connection
-		*/
-		public function __destruct() {
-			$this->conn->close();
-		}
-		
-		/**
-			$SQLquery
-				SQL Query String without parameter (use ? to mark parameter)
-				Ex. SELECT * FROM `users` WHERE `username` = ? AND `password` = ?
-			
-			$SQLparam
-				SQL Parameter as 2D Array
-				Ex. array(
-						array("s", "admin"),
-						array("s", "P4$sw0rd")
-				    )
-		*/
-		public function query($SQLquery, $SQLparam = array()) {
-			if ($this->conn->connect_errno) return FALSE;
-			if($stmt = $this->conn->prepare($SQLquery)) {
-				$type = "";
-				$param = array("Initialize");
-				for($i=0;$i<count($SQLparam);$i++) {
-					$type .= $SQLparam[$i][0];
-					$param[] = &$SQLparam[$i][1];
-				}
-				$param[0] = $type;
-				
-				if(count($SQLparam) > 0) call_user_func_array(array($stmt,"bind_param"),$param);
-				$result = $stmt->execute();
-				if($result == FALSE) return $result;
-				else {
-					$return = array();
-					while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-						$return[] = $row;
-					}
-					return $return;
-				}
-			}
-		}
-	}
-?>
+
+// 
+private $conn = NULL;
+
+/**
+	Class Construct : Connect to SQLite3
+*/
+public function __construct($filename)
+
+/**
+	Class Destruct (End Of Process) : Close Connection
+*/
+public function __destruct()
+
+/**
+	$SQLquery
+		SQL Query String without parameter (use ? to mark parameter)
+		Ex. SELECT * FROM `users` WHERE `username` = ? AND `password` = ?
+	
+	$SQLparam
+		SQL Parameter as 2D Array
+		Ex. array(
+				array("s", "admin"),
+				array("s", "P4$sw0rd")
+		    )
+*/
+public function query($SQLquery, $SQLparam = array())

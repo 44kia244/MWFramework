@@ -14,25 +14,16 @@
 *    You should have received a copy of the GNU General Public License       *
 *    along with MWFramework.  If not, see <http://www.gnu.org/licenses/>.    *
 ****************************************************************************/
-<?php
-	/***************************************
-	* Modular Website Framework ViewLoader *
-	*   Input = Module ID, View ID         *
-	***************************************/
+
+/**
+	Load View
 	
-	class MWF_ViewLoader {
+	$mod_id
+		module name
 		
-		/**
-			Load View
-			
-			$mod_id
-				module name
-				
-			$view_id
-				view filename
-		*/
-		public static function Load($mod_id, $view_id) {
-			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id . ".php"); // DUMMY TEMPOLARY CODE
-		}
-	}
-?>
+	$view_id
+		view filename
+*/
+public static function Load($mod_id, $view_id) {
+	require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id . ".php"); // DUMMY TEMPOLARY CODE
+}
