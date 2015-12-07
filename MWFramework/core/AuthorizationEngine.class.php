@@ -60,5 +60,17 @@
 				)
 			)) == 1;
 		}
+		
+		public function addGroup($G_NAME) {
+			
+		}
+		
+		public function addPermission($P_ID) {
+			
+		}
+		
+		public function authorize($G_ID, $P_ID) {
+			
+		}
 	}
 ?>
