@@ -11,8 +11,11 @@
 	<div id="container">
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
+		<?php if($_GET["loginfail"] == 1) { ?>
+			<h6>Invalid Login</h6>
+		<?php } ?>
 		<input type="submit" value="Login">
-	</div>
+	< /div>
 	</form>
 	<hr>
 	<a href="#">Forget Password</a> <!-- Link to password reset page -->
