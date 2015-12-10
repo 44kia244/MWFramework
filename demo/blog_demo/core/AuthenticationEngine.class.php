@@ -32,14 +32,20 @@
 			$search = $this->getuserdata($username);
 			
 			if(count($search) === 1) {
-				if($search["username"] === $this->mkusername($username) && $search["password"] === $this->mkpassword($password)) return TRUE;
-			} else return FALSE;
+				$search = $search[0];
+				if($search["USER_USERNAME"] === $this->mkusername($username) && $search["USER_PASSWORD"] === $this->mkpassword($password)) return TRUE;
+			} return FALSE;
+		}
+		
+		public function isLoggedIn() {
+			if(!isset($_SESSION["login"]) || empty($_SESSION["login"])) return FALSE;
+			else return $_SESSION["login"];
 		}
 		
 		public function login($username, $password) {
 			if($this->check_login($username, $password)) {
 				session_start();
-				$_SESSION["login"] = hash("SHA256", "#" . $username . $this->mkpassword($username, $password) . $username . "#");
+				$_SESSION["login"] = $this->getuserdata($username)[0];
 				$this->session_sync();
 				return TRUE;
 			} else return FALSE;
@@ -54,7 +60,7 @@
 		public function register($username, $password) {
 			if(count($this->getuserdata($username)) >= 1) return FALSE;
 			
-			$result = $this->DB->query("INSERT INTO `users` (`username`, `password`) VALUES (?, ?)",
+			$result = $this->DB->query("INSERT INTO `users` (`USER_USERNAME`, `USER_PASSWORD`) VALUES (?, ?)",
 				array(
 					array("s", $this->mkusername($username)),
 					array("s", $this->mkpassword($username, $password))
@@ -65,7 +71,7 @@
 		}
 		
 		public function getuserdata($username) {
-			return $this->DB->query("SELECT * FROM `users` WHERE `username` = ?",
+			return $this->DB->query("SELECT * FROM `users` WHERE `USER_USERNAME` = ?",
 				array(
 					array("s", $this->mkusername($username))
 				)
@@ -74,7 +80,7 @@
 		
 		public function changepassword($username, $password, $newpassword) {
 			if($this->check_login($username, $password)) {
-				return $this->DB->query("UPDATE `users` SET `password` = ? WHERE `username` = ?",
+				return $this->DB->query("UPDATE `users` SET `USER_PASSWORD` = ? WHERE `USER_USERNAME` = ?",
 					array(
 						array("s", $this->mkusername($username)),
 						array("s", $this->mkpassword($username, $newpassword))

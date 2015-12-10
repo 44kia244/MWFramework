@@ -64,7 +64,7 @@
 				if($result == FALSE) return $exec_res;
 				else {
 					$return = array();
-					while ($row = $result->fetch_row()) {
+					while ($row = $result->fetch_assoc()) {
 						$return[] = $row;
 					}
 					return $return;

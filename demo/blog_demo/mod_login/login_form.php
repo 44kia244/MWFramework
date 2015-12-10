@@ -3,15 +3,18 @@
 <head>
 	<title>Login Page</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="?mod=mod_login&view=login_css" />
+	<!-- <link rel="stylesheet" type="text/css" href="?mod=mod_login&view=login_css" /> -->
+	<style>
+		<?php MWF_ViewLoader::Load("mod_login", "login_css"); ?>
+	</style>
 </head>
 <body>
 	<h2>Login Form</h2>
 	<form action="?mod=mod_login&view=login_action" method="POST">
 	<div id="container">
-		<input type="text" name="username" placeholder="Username">
-		<input type="password" name="password" placeholder="Password">
-		<input type="submit" value="Login">
+		<input type="text" name="username" placeholder="Username" />
+		<input type="password" name="password" placeholder="Password" />
+		<input type="submit" value="Login" />
 		<?php if($_GET["loginfail"] == 1) { ?>
 			<h4 style="color: red;">Invalid Login</h4>
 		<?php } ?>
