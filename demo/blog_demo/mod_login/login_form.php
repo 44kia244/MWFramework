@@ -12,7 +12,7 @@
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
 		<?php if($_GET["loginfail"] == 1) { ?>
-			<h6>Invalid Login</h6>
+			<h4 style="color: red;">Invalid Login</h4>
 		<?php } ?>
 		<input type="submit" value="Login">
 	</div>
