@@ -74,7 +74,7 @@
 		
 		public function changepassword($username, $password, $newpassword) {
 			if($this->check_login($username, $password)) {
-				return $this->DB->query("UPDATE `users` SET `password` = ? WHERE `username` = ?"
+				return $this->DB->query("UPDATE `users` SET `password` = ? WHERE `username` = ?",
 					array(
 						array("s", $this->mkusername($username)),
 						array("s", $this->mkpassword($username, $newpassword))
