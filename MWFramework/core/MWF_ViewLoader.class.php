@@ -34,7 +34,7 @@
 				view filename
 		*/
 		public static function Load($mod_id, $view_id) {
-			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id . ".php"); // DUMMY TEMPOLARY CODE
+			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_id); // DUMMY TEMPOLARY CODE
 		}
 	}
 ?>
