@@ -37,8 +37,8 @@
 			if(!file_exists(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php")) die("Object Not Found");
 			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php");
 			
-			if(isset($view_id) && !empty($view_id)) $view_data = $index[$view_id];
-			else $view_data = $index["default"];
+			if(isset($view_id) && !empty($view_id)) $view_data = $view_index[$view_id];
+			else $view_data = $view_index["default"];
 			
 			$file = BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_data[0];
 			

@@ -1,4 +1,6 @@
 <?php
+$view_index = array();
+
 $class_index = array(
 	"AuthenticationEngine" => "AuthenticationEngine.class.php",
 	"AuthorizationEngine" => "AuthorizationEngine.class.php",
