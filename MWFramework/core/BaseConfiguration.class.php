@@ -23,8 +23,8 @@
 		public static $MySQL = array(
 			"host" => "localhost",
 			"user" => "root",
-			"pass" => "1234",
-			"db"   => "mwf_db"
+			"pass" => "1101402041095",
+			"db"   => "mwf_db_demo_blog"
 		);
 	}
 	

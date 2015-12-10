@@ -31,9 +31,11 @@
 			$dir = opendir($dirname);
 			while(($row = readdir($dir)) !== FALSE) {
 				if($row != "." && $row != "..") {
-					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, self::readDirectory($dirname."/".$row, FALSE));
-					else {
-						if(preg_match("/.+\\.class\\.php/", $row)) $ret[$row] = $dirname."/".$row;
+					if(is_dir($dirname."/".$row)) if(file_exists($dirname . "/" . $row . "/module_config.php")) {
+						require_once($dirname . "/" . $row . "/module_config.php");
+						foreach($class_index as $classname => $classpath) {
+							$ret[$classname] = $dirname . "/" . $row . "/" . $classpath;
+						}
 					}
 				}
 			} closedir($dir);
@@ -46,9 +48,8 @@
 		$dirname = dirname(dirname(__FILE__));
 		$allowed_class = ClassFinder::listClasses($dirname);
 		
-		$classname .= ".class.php";
 		if(array_key_exists($classname, $allowed_class)) {
 			require_once($allowed_class[$classname]);
-		} else die("Error Loading Resource " . $allowed_class[$classname]);
+		} else die("Error Loading Resource " . $classname);
 	}
 ?>

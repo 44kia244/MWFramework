@@ -87,7 +87,7 @@
 			return $username;
 		}
 		
-		private function mkpass($username, $password) {
+		private function mkpassword($username, $password) {
 			return hash("SHA512", $this->mkusername($username) . $password);
 		}
 		
