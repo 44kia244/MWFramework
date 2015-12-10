@@ -1,4 +1,5 @@
 <?php
+#require('../core/ClassLoader.php');
 $username = $_POST["username"];
 $password = $_POST["password"];
 $loginengine = new AuthenticationEngine();
