@@ -3,11 +3,11 @@
 <head>
 	<title>Login Page</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="/?mod=mod_login&view=login_css" />
+	<link rel="stylesheet" type="text/css" href="?mod=mod_login&view=login_css" />
 </head>
 <body>
 	<h2>Login Form</h2>
-	<form action="/?mod=mod_login&view=login_action" method="POST">
+	<form action="?mod=mod_login&view=login_action" method="POST">
 	<div id="container">
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
