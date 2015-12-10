@@ -54,7 +54,7 @@
 		public function register($username, $password) {
 			if(count($this->getuserdata($username)) >= 1) return FALSE;
 			
-			$result = $this->DB->query("INSERT INTO `users` (`user_username`, `user_password`) VALUES (?, ?)",
+			$result = $this->DB->query("INSERT INTO `users` (`username`, `password`) VALUES (?, ?)",
 				array(
 					array("s", $this->mkusername($username)),
 					array("s", $this->mkpassword($username, $password))
@@ -65,7 +65,7 @@
 		}
 		
 		public function getuserdata($username) {
-			return $this->DB->query("SELECT * FROM `users` WHERE `user_username` = ?",
+			return $this->DB->query("SELECT * FROM `users` WHERE `username` = ?",
 				array(
 					array("s", $this->mkusername($username))
 				)
@@ -74,7 +74,7 @@
 		
 		public function changepassword($username, $password, $newpassword) {
 			if($this->check_login($username, $password)) {
-				return $this->DB->query("UPDATE `users` SET `user_password` = ? WHERE `user_username` = ?",
+				return $this->DB->query("UPDATE `users` SET `password` = ? WHERE `username` = ?",
 					array(
 						array("s", $this->mkusername($username)),
 						array("s", $this->mkpassword($username, $newpassword))
