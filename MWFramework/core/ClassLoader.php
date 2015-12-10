@@ -32,7 +32,7 @@
 			while(($row = readdir($dir)) !== FALSE) {
 				if($row != "." && $row != "..") {
 					if(is_dir($dirname."/".$row)) if(file_exists($dirname . "/" . $row . "/module_config.php")) {
-						require_once($dirname . "/" . $row . "/module_config.php");
+						require($dirname . "/" . $row . "/module_config.php");
 						foreach($class_index as $classname => $classpath) {
 							$ret[$classname] = $dirname . "/" . $row . "/" . $classpath;
 						}

@@ -15,7 +15,7 @@
 			<h6>Invalid Login</h6>
 		<?php } ?>
 		<input type="submit" value="Login">
-	< /div>
+	</div>
 	</form>
 	<hr>
 	<a href="#">Forget Password</a> <!-- Link to password reset page -->
