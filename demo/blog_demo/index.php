@@ -18,5 +18,15 @@
 ?>
 <?php
 	require_once("core/ClassLoader.php");
+	
+	if(!isset($_GET["mod"]) || empty($_GET["mod"])) {
+		$_GET["mod"] = BaseConfiguration::$DefaultMod;
+		$_GET["view"] = "default";
+	}
+	
+	if(!isset($_GET["view"]) || empty($_GET["view"])) {
+		$_GET["view"] = "default";
+	}
+	
 	MWF_ViewLoader::Load($_GET["mod"], $_GET["view"], true);
 ?>
