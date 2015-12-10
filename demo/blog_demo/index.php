@@ -18,5 +18,5 @@
 ?>
 <?php
 	require_once("core/ClassLoader.php");
-	MWF_ViewLoader::Load($_GET["mod"], $_GET["view"]);
+	MWF_ViewLoader::Load($_GET["mod"], $_GET["view"], true);
 ?>

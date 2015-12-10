@@ -40,6 +40,9 @@
 				}
 			} closedir($dir);
 			
+			unset($view_index);
+			unset($class_index);
+			
 			return $ret;
 		}
 	}

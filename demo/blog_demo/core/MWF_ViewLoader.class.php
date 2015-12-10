@@ -23,29 +23,18 @@
 	***************************************/
 	
 	class MWF_ViewLoader {
-		
-		/**
-			Load View
-			
-			$mod_id
-				module name
-				
-			$view_id
-				view filename
-		*/
-		public static function Load($mod_id, $view_id) {
+		public static function Load($mod_id, $view_id, $content_type = false) {
 			if(!file_exists(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php")) die("Object Not Found");
 			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php");
 			
 			if(isset($view_id) && !empty($view_id)) $view_data = $view_index[$view_id];
 			else $view_data = $view_index["default"];
 			
-			$file = BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_data[0];
+			unset($view_index);
+			unset($class_index);
 			
-			if(file_exists($file)) {
-				header("Content-Type: " . $view_data[1]);
-				include($file);
-			} else die("Object Not Found");
+			if($content_type) header("Content-Type: " . $view_data[1]);
+			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_data[0]);
 			
 		}
 	}
