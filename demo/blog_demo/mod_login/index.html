@@ -7,8 +7,7 @@
 </head>
 <body>
 	<h2>Login Form</h2>
-	<!--<form action="./mod_login/ActionLogin.php" method="POST"> -->
-	<form action="/?mod_id=mod_login&view=ActionLogin.php" method="POST">
+	<form action="<?php echo Configuration::$WebPath; ?>?mod_id=mod_login&view=ActionLogin.php" method="POST">
 	<div id="container">
 		<input type="text" name="username" placeholder="Username">
 		<input type="password" name="password" placeholder="Password">
