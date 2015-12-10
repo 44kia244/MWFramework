@@ -1,5 +1,5 @@
 <?php
 $index = array(
-	"default" => array("index.php", "text/html"),
+	"default" => array("index.php", "text/html")
 );
 ?>
