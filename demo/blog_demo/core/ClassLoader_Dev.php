@@ -17,36 +17,38 @@
 	****************************************************************************/
 ?>
 <?php
-	/***************************************
-	* Modular Website Framework ViewLoader *
-	*   Input = Module ID, View ID         *
-	***************************************/
-	
-	class MWF_ViewLoader {
+	class ClassFinder {
+		private static $cache = NULL;
 		
-		/**
-			Load View
-			
-			$mod_id
-				module name
-				
-			$view_id
-				view filename
-		*/
-		public static function Load($mod_id, $view_id) {
-			if(!file_exists(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php")) die("Object Not Found");
-			require(BaseConfiguration::$WebPath . "/" . $mod_id . "/module_config.php");
-			
-			if(isset($view_id) && !empty($view_id)) $view_data = $index[$view_id];
-			else $view_data = $index["default"];
-			
-			$file = BaseConfiguration::$WebPath . "/" . $mod_id . "/" . $view_data[0];
-			
-			if(file_exists($file)) {
-				header("Content-Type: " . $view_data[1]);
-				include($file);
-			} else die("Object Not Found");
-			
+		public static function listClasses($dirname = ".") {
+			if(self::$cache == NULL) self::$cache = self::readDirectory($dirname);
+			return self::$cache;
 		}
+		
+		private static function readDirectory($dirname = ".", $isOuter = TRUE) {
+			$ret = array();
+			
+			$dir = opendir($dirname);
+			while(($row = readdir($dir)) !== FALSE) {
+				if($row != "." && $row != "..") {
+					if(is_dir($dirname."/".$row)) $ret = array_merge($ret, self::readDirectory($dirname."/".$row, FALSE));
+					else {
+						if(preg_match("/.+\\.class\\.php/", $row)) $ret[$row] = $dirname."/".$row;
+					}
+				}
+			} closedir($dir);
+			
+			return $ret;
+		}
+	}
+	
+	function __autoload($classname) {
+		$dirname = dirname(dirname(__FILE__));
+		$allowed_class = ClassFinder::listClasses($dirname);
+		
+		$classname .= ".class.php";
+		if(array_key_exists($classname, $allowed_class)) {
+			require_once($allowed_class[$classname]);
+		} else die("Error Loading Resource " . $classname);
 	}
 ?>
