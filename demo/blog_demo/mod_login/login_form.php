@@ -21,6 +21,6 @@
 	</div>
 	</form>
 	<hr>
-	<a href="#">Forget Password</a> <!-- Link to password reset page -->
+	<a href="?mod=mod_login&view=forgetpassword_form">Forget Password</a> <!-- Link to password reset page -->
 </body>
 </html>
