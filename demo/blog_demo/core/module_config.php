@@ -10,3 +10,19 @@ $class_index = array(
 	"SQLiteDBengine" => "SQLiteDBengine.class.php"
 );
 ?>
+
+<?php
+/*
+$mod_info = array(
+	"module_name" => "core",
+	"view_index" => array(),
+	"class_index" => array(
+		"AuthenticationEngine" => "AuthenticationEngine.class.php",
+		"AuthorizationEngine" => "AuthorizationEngine.class.php",
+		"BaseConfiguration" => "BaseConfiguration.class.php",
+		"DBengine" => "DBengine.class.php",
+		"MWF_ViewLoader" => "MWF_ViewLoader.class.php",
+		"SQLiteDBengine" => "SQLiteDBengine.class.php"
+	)
+);*/
+?>
