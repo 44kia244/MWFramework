@@ -4,7 +4,7 @@
 	<title>Reset Password</title>
 	<meta charset="UTF-8">
 	<style>
-		<?php //MWF_ViewLoader::Load("mod_login", "forgetpassword_css"); ?> <!-- Disable due to PHP Error If you can't see the error please view page source-->
+		<?php MWF_ViewLoader::Load("mod_login", "forgetpassword_css"); ?>
 	</style>
 </head>
 <body>
