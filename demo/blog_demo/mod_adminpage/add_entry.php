@@ -17,5 +17,8 @@
 		<br/>
 		<input type="submit">
 		</form>
+		<?php if($_GET["success"] == 0) { ?>
+			<h4 style="color: red;">Add Entry Failed</h4>
+		<?php } ?>
 	</body>
 </html>
