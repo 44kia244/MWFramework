@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<title>Add Entry</title>
+		<meta charset="UTF-8">
+		<style>
+			<?php MWF_ViewLoader::Load("mod_adminpage", "add_entry_css");?>
+		</style>
 	</head>
 	<body>
 		<h1>Add Blog Entry</h1>
