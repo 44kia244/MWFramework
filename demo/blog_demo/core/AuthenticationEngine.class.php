@@ -97,6 +97,10 @@
 			return hash("SHA512", $this->mkusername($username) . $password);
 		}
 		
+		public function getLoginData() {
+			return empty($this->login) ? array() : $this->login;
+		}
+		
 		private function session_sync() {
 			$this->login = $_SESSION["login"];
 		}
