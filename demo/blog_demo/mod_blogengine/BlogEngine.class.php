@@ -61,22 +61,21 @@
 		}
 		
 		public function getOwnPostRange($start, $length) {
-			$last = $length + $start;
+			$LoginData = $this->Authen->getLoginData();
 			$res = $this->DB->query("SELECT * FROM BLOG_POST WHERE USER_ID = ? LIMIT ?, ?",
 				array(
-					array("i",), //Can't find function that return USER_ID
-					array("i",$start),
-					array("i",$last)
+					array("i", $LoginData["USER_ID"]),
+					array("i", $start),
+					array("i", $length)
 				)
 			);
 		}
 		
 		public function getPostRange($start, $length) {
-			$last = $length + $start;
 			$res = $this->DB->query("SELECT * FROM BLOG_POST LIMIT ?, ?",
 				array(
-					array("i",$start),
-					array("i",$last)
+					array("i", $start),
+					array("i", $length)
 				)
 			);
 		}
