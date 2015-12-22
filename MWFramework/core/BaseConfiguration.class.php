@@ -26,6 +26,8 @@
 			"pass" => "1234",
 			"db"   => "mwf_db_demo_blog"
 		);
+		
+		public static $DefaultMod = "mod_login";
 	}
 	
 	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
