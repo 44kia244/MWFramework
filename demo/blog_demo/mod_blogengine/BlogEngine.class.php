@@ -69,6 +69,7 @@
 					array("i", $length)
 				)
 			);
+			return $res;
 		}
 		
 		public function getPostRange($start, $length) {
@@ -78,6 +79,7 @@
 					array("i", $length)
 				)
 			);
+			return $res;
 		}
 	}
 ?>
