@@ -24,10 +24,10 @@
 			"host" => "localhost",
 			"user" => "root",
 			"pass" => "1234",
-			"db"   => "mwf_db_demo_blog"
+			"db"   => "test"
 		);
 		
-		public static $DefaultMod = "mod_login";
+		public static $DefaultMod = "mod_testview";
 	}
 	
 	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));
