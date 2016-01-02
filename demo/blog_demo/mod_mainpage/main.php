@@ -14,7 +14,7 @@
 	else $page = $_GET["page"];
 	
 	if(!isset($_GET["per_page"])) $per_page = 30;
-	else $page = $_GET["per_page"];
+	else $per_page = $_GET["per_page"];
 	
 	$start = ($page-1) * $per_page;
 	
