@@ -20,15 +20,17 @@
 	
 	$res = $E->getPostRange($start, $per_page);
 	
-	echo "<table>";
+	echo "<table border=\"1\">";
 	for($i=0;$i<count($res);$i++) {
-		echo "<tr>";
-		foreach($res[$i] as $val) {
-			echo "<td>";
-			 echo htmlspecialchars($val);
-			echo "</td>";
-		}
-		echo "</tr>";
+		echo "<tr><td>";
+		echo "<table border=\"1\">";
+			echo "<tr><td colspan=\"2\">" . $res[$i]["POST_TITLE"] . "</td></tr>";
+			echo "<tr><td>&nbsp;</td>";
+			echo "<td>" . $res[$i]["POST_DATA"] . "</td>";
+			echo "</tr>";
+		echo "</table>";
+		echo "</td></tr>";
+		echo "<tr><td>&nbsp;</td></tr>";
 	}
 	echo "</table>";
 ?>
