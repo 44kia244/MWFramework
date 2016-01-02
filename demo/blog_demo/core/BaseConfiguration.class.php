@@ -19,7 +19,7 @@
 <?php
 	class BaseConfiguration {
 		public static $WebPath = "";
-		public static $WebName = "TEST WEBSITE";
+		public static $WebName = "Blog Demo";
 		public static $MySQL = array(
 			"host" => "localhost",
 			"user" => "root",
@@ -27,7 +27,7 @@
 			"db"   => "mwf_db_demo_blog"
 		);
 		
-		public static $DefaultMod = "mod_login";
+		public static $DefaultMod = "mod_mainpage";
 	}
 	
 	BaseConfiguration::$WebPath = dirname(dirname(__FILE__));

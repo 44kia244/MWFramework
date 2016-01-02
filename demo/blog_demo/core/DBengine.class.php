@@ -69,7 +69,7 @@
 					}
 					return $return;
 				}
-			}
+			} else return FALSE;
 		}
 	}
 ?>

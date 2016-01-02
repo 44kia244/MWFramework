@@ -33,7 +33,7 @@
 				)
 			);
 			// Return Success or Failure
-			return $success[0];
+			return $success[0][0];
 		}
 		
 		public function delPost($PostID) {
@@ -43,7 +43,7 @@
 				)
 			);
 			
-			return $success[0];
+			return $success[0][0];
 		}
 		
 		public function getPost($PostID) {

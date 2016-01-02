@@ -6,6 +6,6 @@ $loginengine = new AuthenticationEngine();
 if(!$loginengine->login($username,$password)) {
 	header('Location: ?mod=mod_login&loginfail=1');
 } else {
-	header('Location: ?mod=mod_login'); //Redirect to blog main view BlogView(Vm)
+	header('Location: ?mod=mod_adminpage'); //Redirect to blog main view BlogView(Vm)
 }
 ?>
