@@ -4,7 +4,7 @@
 		<title><?php echo BaseConfiguration::$WebName . " - Main Page"; ?></title>
 		<meta charset="UTF-8">
 		<style>
-			<?php MWF_ViewLoader::Load("mod_mainpage", "default_css");?>
+			<?php MWF_ViewLoader::Load("mod_core_design", "base_css");?>
 		</style>
 	</head>
 	<body>
@@ -20,19 +20,14 @@
 	
 	$res = $E->getPostRange($start, $per_page);
 	
-	echo "<table border=\"1\">";
 	for($i=0;$i<count($res);$i++) {
-		echo "<tr><td>";
-		echo "<table border=\"1\">";
-			echo "<tr><td colspan=\"2\">" . $res[$i]["POST_TITLE"] . "</td></tr>";
-			echo "<tr><td>&nbsp;</td>";
-			echo "<td>" . $res[$i]["POST_DATA"] . "</td>";
-			echo "</tr>";
-		echo "</table>";
-		echo "</td></tr>";
-		echo "<tr><td>&nbsp;</td></tr>";
+?>
+	<div class="blog_post">
+		<h3><?php echo $res[$i]["POST_TITLE"]; ?></h3>
+		<p><?php echo $res[$i]["POST_DATA"]; ?></p>
+	</div>
+<?php
 	}
-	echo "</table>";
 ?>
 	</body>
 </html>

@@ -1,17 +1,23 @@
+<?php
+	$Authen = new ExtendedAuthenticationEngine();
+	$E = new BlogEngine();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Welcome To My Blog</title>
 		<meta charset="UTF-8">
 		<style>
-			<?php MWF_ViewLoader::Load("mod_adminpage", "default_css");?>
+			<?php MWF_ViewLoader::Load("mod_core_design", "base_css");?>
 		</style>
 	</head>
 	<body>
-		<a href="?mod=mod_adminpage&view=add_entry">Create new blog entry</a>
+		<table style="width: 100%"><tr>
+		<?php if($Authen->isAuthorized(1)) echo '<td style="text-align: left;"><a href="?mod=mod_adminpage&view=add_entry">Create new blog entry</a></td>'; ?>
+		<td style="text-align: right;"><?php $data = $Authen->getLoginData(); echo "Welcome : " . $data["NAME"] . " " . $data["SURNAME"]; ?> <a href="?mod=mod_login&view=logout">Logout</a></td>
+		</tr></table>
 		<hr>
 <?php
-	$E = new BlogEngine();
 	if(!isset($_GET["page"])) $page = 1;
 	else $page = $_GET["page"];
 	
@@ -20,14 +26,16 @@
 	
 	$start = ($page-1) * $per_page;
 	
-	$res = $E->getPostRange($start, $per_page);
+	if($Authen->isAuthorized(4)) $res = $E->getPostRange($start, $per_page);
+	else $res = $E->getOwnPostRange($start, $per_page);
 	
-	echo "<table border=\"1\">";
+	echo '<table style="border: 1px solid black; width: 100%; border-collapse: collapse;">';
 	for($i=0;$i<count($res);$i++) {
-		echo "<tr>";
+		echo '<tr style="border: 1px solid black;">';
+		echo "<td style=\"text-align: center\">" . $res[$i]["POST_ID"] . "</td>";
 		echo "<td>" . $res[$i]["POST_TITLE"] . "</td>";
-		echo "<td><a href=\"?mod=mod_adminpage&view=edit_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Edit</a></td>";
-		echo "<td><a href=\"?mod=mod_adminpage&view=delete_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Delete</a></td>";
+		if($Authen->isAuthorized(2)) echo "<td style=\"text-align: center\"><a href=\"?mod=mod_adminpage&view=edit_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Edit</a></td>";
+		if($Authen->isAuthorized(3)) echo "<td style=\"text-align: center\"><a href=\"?mod=mod_adminpage&view=delete_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Delete</a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";

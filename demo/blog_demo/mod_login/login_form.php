@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<!-- <link rel="stylesheet" type="text/css" href="?mod=mod_login&view=login_css" /> -->
 	<style>
-		<?php MWF_ViewLoader::Load("mod_login", "login_css"); ?>
+		<?php MWF_ViewLoader::Load("mod_core_design", "base_css");?>
 	</style>
 </head>
 <body>

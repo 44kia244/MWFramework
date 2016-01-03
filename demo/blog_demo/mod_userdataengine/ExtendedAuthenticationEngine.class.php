@@ -10,7 +10,7 @@
 		public function isAuthorized($P_ID) {
 			$login = $this->isLoggedIn();
 			if(!$login) return FALSE;
-			else return $AuthorizationEngine->isAuthorized($login["G_ID"], $P_ID);
+			else return $this->AuthorizationEngine->isAuthorized($login["G_ID"], $P_ID);
 		}
 		
 		public function getuserdata($username) {	// Override
@@ -21,10 +21,10 @@
 			);
 		}
 		
-		public function register($username, $password, $name, $surname, $address, $telephone) {	// Override
-			if(parent::register($username, $password)) {
+		public function register_ex($username, $password, $name, $surname, $address, $telephone) {	// Override
+			if($this->register($username, $password)) {
 				$data = parent::getuserdata($username);
-				$success = $this->DB->query("INSERT INTO USERDATA VALUES (?, ?, ?, ?, ?, 2)",
+				return $this->DB->query("INSERT INTO USERDATA VALUES (?, ?, ?, ?, ?, 2)",
 					array(
 						array("i", $data["USER_ID"]),
 						array("s", $name),

@@ -53,14 +53,13 @@
 		}
 		
 		public function isAuthorized($G_ID, $P_ID) {
-			$T = $this->DB->query("SELECT COUNT(*) FROM AUTHORIZATION A JOIN PERMISSIONS P ON (P.P_ID = A.P_ID) WHERE A.G_ID = ? AND G.P_ID = ?",
+			$T = $this->DB->query("SELECT COUNT(*) FROM AUTHORIZATION WHERE G_ID = ? AND P_ID = ?",
 				array(
 					array("i", $G_ID),
 					array("i", $P_ID)
 				)
 			);
-			
-			return $T[0][0] == 1;
+			return $T[0]["COUNT(*)"] == 1;
 		}
 		
 		public function addGroup($G_NAME) {

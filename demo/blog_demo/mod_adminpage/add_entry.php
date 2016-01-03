@@ -4,7 +4,7 @@
 		<title>Add Entry</title>
 		<meta charset="UTF-8">
 		<style>
-			<?php MWF_ViewLoader::Load("mod_adminpage", "add_entry_css");?>
+			<?php MWF_ViewLoader::Load("mod_core_design", "base_css");?>
 		</style>
 	</head>
 	<body>

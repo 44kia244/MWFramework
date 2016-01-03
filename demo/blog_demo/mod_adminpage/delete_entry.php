@@ -4,7 +4,7 @@
 		<title>Delete Blog Entry</title>
 		<meta charset="UTF-8">
 		<style>
-			<?php MWF_ViewLoader::Load("mod_adminpage", "delete_entry_css");?>
+			<?php MWF_ViewLoader::Load("mod_core_design", "base_css");?>
 		</style>
 	</head>
 	<body>
@@ -18,8 +18,9 @@
 			<input type="submit" value="Confirm Delete" />
 			<input type="hidden" name="POST_ID" value="<?php echo $data->getPostID(); ?>" />
 		</form>
-		
-		<h3><?php echo $data->getPostTitle(); ?></h3>
-		<p><?php echo $data->getPostData(); ?></p>
+		<div class="blog_post">
+			<h3><?php echo $data->getPostTitle(); ?></h3>
+			<p><?php echo $data->getPostData(); ?></p>
+		</div>
 	</body>
 </html>

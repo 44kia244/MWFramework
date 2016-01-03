@@ -1,6 +1,6 @@
 <?php
 	$view_index = array(
-		"default" => array("main.php", "text/html"),
+		"base_css" => array("base.css", "text/css")
 	);
 	
 	$class_index = array();

@@ -13,7 +13,7 @@
 		
 		public function __construct() {
 			$this->DB = new DBengine();
-			$this->Authen = new AuthenticationEngine();
+			$this->Authen = new ExtendedAuthenticationEngine();
 			$this->Authorize = new AuthorizationEngine();
 		}
 		

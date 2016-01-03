@@ -23,7 +23,7 @@
 		
 		public function __construct() {
 			$this->DB = new DBengine();
-			session_start();
+			if(session_status() == PHP_SESSION_NONE) session_start();
 				if(!empty($_SESSION["login"])) $this->session_sync();
 				else session_destroy();
 		}

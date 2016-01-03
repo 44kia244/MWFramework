@@ -1,7 +1,7 @@
 <?php
 $username = $_POST["username"];
 $password = $_POST["password"];
-$loginengine = new AuthenticationEngine();
+$loginengine = new ExtendedAuthenticationEngine();
 
 if(!$loginengine->login($username,$password)) {
 	header('Location: ?mod=mod_login&loginfail=1');
