@@ -18,8 +18,8 @@
 ?>
 <?php
 	class AuthenticationEngine {
-		private $DB;
-		private $login;
+		protected $DB;
+		protected $login;
 		
 		public function __construct() {
 			$this->DB = new DBengine();
@@ -28,7 +28,7 @@
 				else session_destroy();
 		}
 		
-		private function check_login($username, $password) {
+		protected function check_login($username, $password) {
 			$search = $this->getuserdata($username);
 			
 			if(count($search) === 1) {
@@ -60,7 +60,7 @@
 		public function register($username, $password) {
 			if(count($this->getuserdata($username)) >= 1) return FALSE;
 			
-			$result = $this->DB->query("INSERT INTO `users` (`USER_USERNAME`, `USER_PASSWORD`) VALUES (?, ?)",
+			$result = $this->DB->query("INSERT INTO users (USER_USERNAME, USER_PASSWORD) VALUES (?, ?)",
 				array(
 					array("s", $this->mkusername($username)),
 					array("s", $this->mkpassword($username, $password))
@@ -71,7 +71,7 @@
 		}
 		
 		public function getuserdata($username) {
-			return $this->DB->query("SELECT * FROM `users` WHERE `USER_USERNAME` = ?",
+			return $this->DB->query("SELECT * FROM users WHERE USER_USERNAME = ?",
 				array(
 					array("s", $this->mkusername($username))
 				)
@@ -80,7 +80,7 @@
 		
 		public function changepassword($username, $password, $newpassword) {
 			if($this->check_login($username, $password)) {
-				return $this->DB->query("UPDATE `users` SET `USER_PASSWORD` = ? WHERE `USER_USERNAME` = ?",
+				return $this->DB->query("UPDATE users SET USER_PASSWORD = ? WHERE USER_USERNAME = ?",
 					array(
 						array("s", $this->mkusername($username)),
 						array("s", $this->mkpassword($username, $newpassword))
@@ -89,11 +89,11 @@
 			} return FALSE;
 		}
 		
-		private function mkusername($username) {
+		protected function mkusername($username) {
 			return $username;
 		}
 		
-		private function mkpassword($username, $password) {
+		protected function mkpassword($username, $password) {
 			return hash("SHA512", $this->mkusername($username) . $password);
 		}
 		
@@ -101,7 +101,7 @@
 			return empty($this->login) ? array() : $this->login;
 		}
 		
-		private function session_sync() {
+		protected function session_sync() {
 			$this->login = $_SESSION["login"];
 		}
 	}
