@@ -2,7 +2,6 @@
 	class ExtendedAuthenticationEngine extends AuthenticationEngine {
 		private $AuthorizationEngine;
 		
-		
 		public function __construct() {
 			parent::__construct();
 			$this->AuthorizationEngine = new AuthorizationEngine();
