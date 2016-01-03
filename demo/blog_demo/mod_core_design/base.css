@@ -57,3 +57,8 @@ ul.tabs li a {
 ul.tabs li a:hover {
 	background-color: rgba(0, 0, 0, 0.15);
 }
+
+.dark15 {
+	background-color: rgba(0, 0, 0, 0.15);
+	height: 2em;
+}

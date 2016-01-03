@@ -15,7 +15,7 @@
 	if(!isset($_GET["page"])) $page = 1;
 	else $page = $_GET["page"];
 	
-	if(!isset($_GET["per_page"])) $per_page = 30;
+	if(!isset($_GET["per_page"])) $per_page = 10;
 	else $per_page = $_GET["per_page"];
 	
 	$start = ($page-1) * $per_page;
@@ -31,5 +31,17 @@
 <?php
 	}
 ?>
+		<ul class="tabs dark15">
+		<?php if($page > 1) { ?><li><a href="?page=<?php echo $page-1; ?>&per_page=<?php echo $per_page; ?>">&lt;</a></li><?php } ?>
+<?php
+	$count = ceil($E->getPostCount() / $per_page);
+	for( $i = 1; $i <= $count && $i <= 10; $i++) {
+?>
+	<li><a href="?page=<?php echo $i; ?>&per_page=<?php echo $per_page; ?>"><?php echo $i; ?></a></li>
+<?php
+	}
+?>
+<?php if($page < $count) { ?><li><a href="?page=<?php echo $page+1; ?>&per_page=<?php echo $per_page; ?>">&gt;</a></li><?php } ?>
+		</ul>
 	</body>
 </html>

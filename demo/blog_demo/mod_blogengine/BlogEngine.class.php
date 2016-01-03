@@ -81,6 +81,16 @@
 			return $res;
 		}
 		
+		public function getOwnPostCount() {
+			$LoginData = $this->Authen->getLoginData();
+			$res = $this->DB->query("SELECT POST_ID FROM BLOG_POST WHERE USER_ID = ?",
+				array(
+					array("i", $LoginData["USER_ID"])
+				)
+			);
+			return count($res);
+		}
+		
 		public function getPostRange($start, $length) {
 			$res = $this->DB->query("SELECT * FROM BLOG_POST ORDER BY POST_ID DESC LIMIT ?, ?",
 				array(
@@ -89,6 +99,10 @@
 				)
 			);
 			return $res;
+		}
+		
+		public function getPostCount() {
+			return count($this->DB->query("SELECT POST_ID FROM BLOG_POST"));
 		}
 	}
 ?>

@@ -25,8 +25,13 @@
 	
 	$start = ($page-1) * $per_page;
 	
-	if($Authen->isAuthorized(4)) $res = $E->getPostRange($start, $per_page);
-	else $res = $E->getOwnPostRange($start, $per_page);
+	if($Authen->isAuthorized(4)) {
+		$res = $E->getPostRange($start, $per_page);
+		$count = ceil($E->getPostCount() / $per_page);
+	} else {
+		$res = $E->getOwnPostRange($start, $per_page);
+		$count = ceil($E->getOwnPostCount() / $per_page);
+	} 
 	
 	echo '<table style="border: 1px solid black; width: 100%; border-collapse: collapse;">';
 	for($i=0;$i<count($res);$i++) {
@@ -39,5 +44,17 @@
 	}
 	echo "</table>";
 ?>
+		<ul class="tabs dark15">
+		<?php if($page > 1) { ?><li><a href="?mod=mod_adminpage&page=<?php echo $page-1; ?>&per_page=<?php echo $per_page; ?>">&lt;</a></li><?php } ?>
+<?php
+	
+	for( $i = 1; $i <= $count && $i <= 10; $i++) {
+?>
+	<li><a href="?mod=mod_adminpage&page=<?php echo $i; ?>&per_page=<?php echo $per_page; ?>"><?php echo $i; ?></a></li>
+<?php
+	}
+?>
+<?php if($page < $count) { ?><li><a href="?mod=mod_adminpage&page=<?php echo $page+1; ?>&per_page=<?php echo $per_page; ?>">&gt;</a></li><?php } ?>
+		</ul>
 	</body>
 </html>
