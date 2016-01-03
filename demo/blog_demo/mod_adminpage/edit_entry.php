@@ -8,12 +8,16 @@
 		</style>
 	</head>
 	<body>
+		<?php
+			$E = new BlogEngine();
+			$data = $E->getPost($_GET["POST_ID"]);
+		?>
 		<h1>Edit Blog Entry</h1>
 		<form action="?mod=mod_adminpage&view=edit_entry_action" method="POST">
 		<h3>Blog Title</h3>
-		<input type="text" name="title" value="<?php //Title from query via blogengine?>">
+		<input type="text" name="title" value="<?php echo $data->getPostTitle(); ?>" /><input type="hidden" name="POST_ID" value="<?php echo $data->getPostID(); ?>" />
 		<h3>Blog Data</h3>
-		<textarea rows="10" cols="100" name="data"> <?php //Data from query via blogengine ?> </textarea>
+		<textarea rows="10" cols="100" name="data"><?php echo $data->getPostData(); ?></textarea>
 		<br/>
 		<input type="submit">
 	</body>

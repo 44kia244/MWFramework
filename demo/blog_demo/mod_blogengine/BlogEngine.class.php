@@ -47,6 +47,7 @@
 		}
 		
 		public function getPost($PostID) {
+			
 			$res = $this->DB->query("SELECT * FROM BLOG_POST WHERE POST_ID = ?",
 				array(
 					array("i", $PostID)
@@ -56,13 +57,21 @@
 			return new PostData($res[0]["POST_ID"], $res[0]["POST_TITLE"], $res[0]["POST_DATA"], $res[0]["USER_ID"]);
 		}
 		
-		public function setPost($PostID, $PostData) {
+		public function setPost($PostData) {
+			$success = $this->DB->query("UPDATE BLOG_POST SET POST_TITLE = ?, POST_DATA = ? WHERE POST_ID = ?",
+				array(
+					array("s", $PostData->getPostTitle()),
+					array("s", $PostData->getPostData()),
+					array("i", $PostData->getPostID())
+				)
+			);
 			
+			return $success[0][0];
 		}
 		
 		public function getOwnPostRange($start, $length) {
 			$LoginData = $this->Authen->getLoginData();
-			$res = $this->DB->query("SELECT * FROM BLOG_POST WHERE USER_ID = ? LIMIT ?, ?",
+			$res = $this->DB->query("SELECT * FROM BLOG_POST WHERE USER_ID = ? ORDER BY POST_ID DESC LIMIT ?, ?",
 				array(
 					array("i", $LoginData["USER_ID"]),
 					array("i", $start),
@@ -73,7 +82,7 @@
 		}
 		
 		public function getPostRange($start, $length) {
-			$res = $this->DB->query("SELECT * FROM BLOG_POST LIMIT ?, ?",
+			$res = $this->DB->query("SELECT * FROM BLOG_POST ORDER BY POST_ID DESC LIMIT ?, ?",
 				array(
 					array("i", $start),
 					array("i", $length)
