@@ -1,6 +1,7 @@
 <?php
 	$Authen = new ExtendedAuthenticationEngine();
 	$E = new BlogEngine();
+	if(!$Authen->isLoggedIn()) header("Location: .");
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,10 +13,8 @@
 		</style>
 	</head>
 	<body>
-		<table style="width: 100%"><tr>
-		<?php if($Authen->isAuthorized(1)) echo '<td style="text-align: left;"><a href="?mod=mod_adminpage&view=add_entry">Create new blog entry</a></td>'; ?>
-		<td style="text-align: right;"><?php $data = $Authen->getLoginData(); echo "Welcome : " . $data["NAME"] . " " . $data["SURNAME"]; ?> <a href="?mod=mod_login&view=logout">Logout</a></td>
-		</tr></table>
+		<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
+		<?php if($Authen->isAuthorized(1)) echo '<p><a href="?mod=mod_adminpage&view=add_entry">Create new blog entry</a></p>'; ?>
 		<hr>
 <?php
 	if(!isset($_GET["page"])) $page = 1;

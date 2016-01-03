@@ -1,0 +1,1 @@
+<?php header("Location: ?mod=mod_login"); ?>

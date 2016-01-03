@@ -23,3 +23,37 @@ div.blog_post p {
 	padding: 0;
 	margin: 0.5em;
 }
+
+div.headerbar {
+	background-color: rgba(0, 0, 0, 0.15);
+	height: 2em;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+ul.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	height: 100%;
+}
+
+ul.tabs li {
+    float: left;
+	height: 100%;
+}
+
+ul.tabs li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+	height: 100%;
+    padding: 0.35em 0.5em;
+    text-decoration: none;
+}
+
+ul.tabs li a:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}

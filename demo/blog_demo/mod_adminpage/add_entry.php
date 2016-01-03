@@ -8,6 +8,7 @@
 		</style>
 	</head>
 	<body>
+		<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
 		<h1>Add Blog Entry</h1>
 		<form action="?mod=mod_adminpage&view=add_entry_action" method="POST">
 		<h3>Blog Title</h3>

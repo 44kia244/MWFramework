@@ -1,3 +1,4 @@
+<?php $Authen = new ExtendedAuthenticationEngine(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,6 +9,7 @@
 		</style>
 	</head>
 	<body>
+		<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
 <?php
 	$E = new BlogEngine();
 	if(!isset($_GET["page"])) $page = 1;

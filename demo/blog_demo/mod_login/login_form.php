@@ -9,6 +9,7 @@
 	</style>
 </head>
 <body>
+	<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
 	<h2>Login Form</h2>
 	<form action="?mod=mod_login&view=login_action" method="POST">
 	<div id="container">

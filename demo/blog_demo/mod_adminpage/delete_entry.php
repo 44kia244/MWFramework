@@ -8,6 +8,7 @@
 		</style>
 	</head>
 	<body>
+		<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
 		<?php
 			$E = new BlogEngine();
 			$data = $E->getPost($_GET["POST_ID"]);
