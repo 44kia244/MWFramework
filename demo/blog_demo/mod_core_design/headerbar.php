@@ -9,7 +9,7 @@
 			<li><a href="?mod=mod_login">Login</a></li>
 		<?php } else { ?>
 			<li><a href="?mod=mod_adminpage"><?php $data = $Authen->getLoginData(); echo $data["NAME"] . " " . $data["SURNAME"]; ?></a></li>
-			<li><a href="#">My Profile</a></li>
+			<!-- <li><a href="#">My Profile</a></li> -->
 			<li><a href="?mod=mod_login&view=logout">Logout</a></li>
 		<?php } ?>
 	</ul>
