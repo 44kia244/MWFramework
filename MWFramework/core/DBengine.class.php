@@ -61,7 +61,7 @@
 				if(count($SQLparam) > 0) call_user_func_array(array($stmt,"bind_param"),$param);
 				$exec_res = $stmt->execute();
 				$result = $stmt->get_result();
-				if($result == FALSE) return $exec_res;
+				if($result == FALSE) return array(array($exec_res));
 				else {
 					$return = array();
 					while ($row = $result->fetch_assoc()) {
@@ -69,7 +69,7 @@
 					}
 					return $return;
 				}
-			}
+			} else return FALSE;
 		}
 	}
 ?>
