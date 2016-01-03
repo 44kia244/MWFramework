@@ -33,27 +33,27 @@ div.headerbar {
 }
 
 ul.tabs {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 	height: 100%;
 }
 
 ul.tabs li {
-    float: left;
+	float: left;
 	height: 100%;
 }
 
 ul.tabs li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
+	display: inline-block;
+	color: white;
+	text-align: center;
 	height: 100%;
-    padding: 0.35em 0.5em;
-    text-decoration: none;
+	padding: 0.35em 0.5em;
+	text-decoration: none;
 }
 
 ul.tabs li a:hover {
-    background-color: rgba(0, 0, 0, 0.15);
+	background-color: rgba(0, 0, 0, 0.15);
 }
