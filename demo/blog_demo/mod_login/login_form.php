@@ -1,3 +1,6 @@
+<?php
+	$target = (!empty($_GET["t_mod"]) && !empty($_GET["t_view"])) ? "?mod=" . $_GET["t_mod"] . "&view=" . $_GET["t_view"] : ".";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +18,7 @@
 	<div id="container">
 		<input type="text" name="username" placeholder="Username" />
 		<input type="password" name="password" placeholder="Password" />
+		<input type="hidden" name="targetpage" value="<?php echo $target; ?>" />
 		<input type="submit" value="Login" />
 		<?php if($_GET["loginfail"] == 1) { ?>
 			<h4 style="color: red;">Invalid Login</h4>
