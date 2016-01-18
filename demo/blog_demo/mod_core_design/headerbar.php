@@ -6,10 +6,12 @@
 	<ul class="tabs">
 		<li><a href=".">Main Page</a></li>
 		<?php if(!$Authen->isLoggedIn()) { ?>
+			<li class="space"></li>
 			<li><a href="?mod=mod_login">Login</a></li>
 		<?php } else { ?>
 			<li><a href="?mod=mod_adminpage"><?php $data = $Authen->getLoginData(); echo $data["NAME"] . " " . $data["SURNAME"]; ?></a></li>
 			<!-- <li><a href="#">My Profile</a></li> -->
+			<li class="space"></li>
 			<li><a href="?mod=mod_login&view=logout">Logout</a></li>
 		<?php } ?>
 	</ul>
