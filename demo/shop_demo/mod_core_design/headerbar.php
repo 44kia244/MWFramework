@@ -5,6 +5,8 @@
 <div class="headerbar">
 	<ul class="tabs">
 		<li><a href=".">Main Page</a></li>
+		<li><a href="?mod=mod_search">Search Page</a></li>
+		<li><a href="?mod=mod_cart">Cart</a></li>
 		<?php if(!$Authen->isLoggedIn()) { ?>
 			<li class="space"></li>
 			<li><a href="?mod=mod_login">Login</a></li>
