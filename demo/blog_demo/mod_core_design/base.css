@@ -3,20 +3,23 @@ html {
 }
 
 body {
-	background-color: rgb(200, 200, 200);
+	background-color: rgba(0, 0, 0, 0.3);
 	width: 80%;
 	margin: auto;
 }
 
 div.blog_post {
-	border: 1px dashed black;
-	margin: 1em;
+	border: 1px solid black;
+	margin: 1em auto;
 	padding: 0.5em;
+	font-family: sans-serif;
+	width: 80%;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 div.blog_post h3 {
 	padding: 0;
-	margin: 0.5em;
+	margin: 0.5em 0.5em 1em 0.5em;
 }
 
 div.blog_post p {
@@ -26,10 +29,14 @@ div.blog_post p {
 
 div.headerbar {
 	background-color: rgba(0, 0, 0, 0.15);
-	height: 2em;
+	height: 4em;
 	top: 0;
 	left: 0;
 	right: 0;
+}
+
+div.headerbar ul.tabs li a {
+	padding: 1.2em 0.5em;
 }
 
 ul.tabs {

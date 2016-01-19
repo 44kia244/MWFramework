@@ -15,7 +15,7 @@
 	if(!isset($_GET["page"])) $page = 1;
 	else $page = $_GET["page"];
 	
-	if(!isset($_GET["per_page"])) $per_page = 10;
+	if(!isset($_GET["per_page"])) $per_page = 5;
 	else $per_page = $_GET["per_page"];
 	
 	$start = ($page-1) * $per_page;

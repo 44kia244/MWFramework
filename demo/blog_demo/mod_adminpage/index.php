@@ -36,10 +36,10 @@
 	echo '<table style="border: 1px solid black; width: 100%; border-collapse: collapse;">';
 	for($i=0;$i<count($res);$i++) {
 		echo '<tr style="border: 1px solid black;">';
-		echo "<td style=\"text-align: center\">" . $res[$i]["POST_ID"] . "</td>";
-		echo "<td>" . $res[$i]["POST_TITLE"] . "</td>";
-		if($Authen->isAuthorized(2)) echo "<td style=\"text-align: center\"><a href=\"?mod=mod_adminpage&view=edit_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Edit</a></td>";
-		if($Authen->isAuthorized(3)) echo "<td style=\"text-align: center\"><a href=\"?mod=mod_adminpage&view=delete_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Delete</a></td>";
+		echo "<td style=\"text-align: center;\">" . ($start + $i + 1) . "</td>";
+		echo "<td style=\"word-wrap: break-word;\">" . $res[$i]["POST_TITLE"] . "</td>";
+		if($Authen->isAuthorized(2)) echo "<td style=\"text-align: center; width: 3em;\"><a href=\"?mod=mod_adminpage&view=edit_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Edit</a></td>";
+		if($Authen->isAuthorized(3)) echo "<td style=\"text-align: center; width: 4em;\"><a href=\"?mod=mod_adminpage&view=delete_entry&POST_ID=" . $res[$i]["POST_ID"] . "\">Delete</a></td>";
 		echo "</tr>";
 	}
 	echo "</table>";
