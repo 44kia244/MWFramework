@@ -1,5 +1,13 @@
 <?php
-	$target = (!empty($_GET["t_mod"]) && !empty($_GET["t_view"])) ? "?mod=" . $_GET["t_mod"] . "&view=" . $_GET["t_view"] : ".";
+	$target = $_GET["t_mod"] !== "" ? "?mod=" . $_GET["t_mod"] . ($_GET["t_view"] !== "" ? "&view=" . $_GET["t_view"] : "") : ".";
+	/* if($_GET["t_mod"] !== "") {
+		$target = "?mod=" . $_GET["t_mod"];
+		if($_GET["t_view"] !== "") {
+			$target = $target . "&view=" . $_GET["t_view"];
+		}
+	} else {
+		$target = ".";
+	} */
 ?>
 <!DOCTYPE html>
 <html>
