@@ -57,5 +57,32 @@
 			
 			return new Product($product["PRODUCT_ID"], $product["PRODUCT_NAME"], $product["PRODUCT_PRICE"], $pics, $product["PRODUCT_DESC"]);
 		}
+		
+		public function SearchProducts($search_string) {
+			$data = $this->DB->query("SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE FROM PRODUCTS WHERE PRODUCT_NAME LIKE ?",
+				array(
+					array("s", "%" . addcslashes($search_string, '%_') . "%")
+				)
+			);
+			
+			$result = array();
+			foreach($data as $product) {
+				$pics = array();
+				
+				$pic = $this->DB->query("SELECT PIC_URL FROM PRODUCTS_PIC WHERE PRODUCT_ID = ?",
+					array(
+						array("i", $product["PRODUCT_ID"])
+					)
+				);
+				
+				foreach($pic as $eachpic) {
+					$pics[] = $eachpic["PIC_URL"];
+				}
+				
+				$result[] = new Product($product["PRODUCT_ID"], $product["PRODUCT_NAME"], $product["PRODUCT_PRICE"], $pics);
+			}
+			
+			return $result;
+		}
 	}
 ?>

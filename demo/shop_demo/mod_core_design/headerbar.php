@@ -11,7 +11,7 @@
 			<li class="space"></li>
 			<li><a href="?mod=mod_login">Login</a></li>
 		<?php } else { ?>
-			<li><a href="?mod=mod_adminpage"><?php $data = $Authen->getLoginData(); echo $data["NAME"] . " " . (strlen($data["SURNAME"]) <= 10 ? $data["SURNAME"] : $data["SURNAME"]{0}) . "."; ?></a></li>
+			<li><a href="javascript:void(0)"><?php $data = $Authen->getLoginData(); echo $data["NAME"] . " " . (strlen($data["SURNAME"]) <= 10 ? $data["SURNAME"] : $data["SURNAME"]{0}) . "."; ?></a></li>
 			<!-- <li><a href="#">My Profile</a></li> -->
 			<li class="space"></li>
 			<li><a href="?mod=mod_login&view=logout">Logout</a></li>
