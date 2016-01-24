@@ -134,3 +134,11 @@ div#ProductInfo img {
 div#ProductBox {
 	
 }
+
+table.fulltbl {
+	width: 100%;
+}
+
+.align_right {
+	text-align: right;
+}

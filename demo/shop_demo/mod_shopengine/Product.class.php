@@ -16,7 +16,7 @@
 		
 		public function getProductID() { return $this->PRODUCT_ID; }
 		public function getProductNAME() { return $this->PRODUCT_NAME; }
-		public function getProductPRICE() { return $this->PRODUCT_PRICE; }
+		public function getProductPRICE() { return sprintf("%.2f", $this->PRODUCT_PRICE); }
 		public function getProductDESC() { return $this->PRODUCT_DESC; }
 		public function getProductPICS() { return $this->PRODUCT_PICS; }
 		

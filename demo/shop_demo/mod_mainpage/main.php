@@ -28,9 +28,9 @@
 			<div class="product_thumbnail">
 				<h6 class="pname"><?php echo htmlspecialchars($product->getProductNAME()); ?></h6>
 				<img src="<?php echo $product->getProductPICS()[0]; ?>" class="ppic"/>
-				<h6 class="pprice"><?php echo htmlspecialchars(sprintf("%.2f THB", $product->getProductPRICE())); ?></h6>
+				<h6 class="pprice"><?php echo htmlspecialchars($product->getProductPRICE()); ?> THB</h6>
 				<h6 class="INFO_LINK">
-					<a href="?mod=mod_mainpage&view=view_product&id=<?php echo $product->getProductID(); ?>" target="_blank">MORE INFO</a>
+					<a href="?mod=mod_mainpage&view=view_product&id=<?php echo $product->getProductID(); ?>">MORE INFO</a>
 				</h6>
 			</div>
 			<?php } ?>
