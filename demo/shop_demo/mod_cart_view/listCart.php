@@ -1,13 +1,24 @@
 <?php
 	$E = new CartEngine();
+	$F = new ShopEngine();
 	$res = $E->viewCart();
 	
-	$arr = array("success" => FALSE);
+	$arr = array(0 => FALSE);
 	if($res != FALSE) {
-		$arr["success"] = TRUE;
-		$arr = array_merge($arr,$res);
+		$arr[0] = TRUE;
+		foreach($res as $item) {
+			$item_info = $F->getProductDetails($item[0]);
+			$tmp = array(
+				"PRODUCT_ID" => $item_info->getProductID(),
+				"PRODUCT_NAME" => $item_info->getProductName(),
+				"PRODUCT_PRICE" => $item_info->getProductPrice(),
+				"PRODUCT_QTY" => $item[1];
+			);
+			$arr[] = $tmp;
+		}
+		
 	} else {
-		$arr["success"] = $res;
+		$arr[0] = $res;
 	}
 	
 	echo json_encode($res);
