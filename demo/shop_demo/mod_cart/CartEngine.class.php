@@ -31,7 +31,7 @@
 			
 		}
 		
-		public function delItemCart($ItemCartData){
+		public function delItemCart($pid,$qty){
 			
 		}
 		
