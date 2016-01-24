@@ -53,6 +53,15 @@
 			return $success[0][0];
 		}
 		
+		public function clearCart(){
+			$success = $this->DB->query("DELETE FROM cart WHERE USER_ID = ?",
+				array(
+					array("i",$_SESSION["login"]["USER_ID"])
+				)
+			);
+			return $success[0][0];
+		}
+		
 		public function isHasItem($pid) {
 			$data = $this->DB->query("SELECT QTY FROM cart WHERE USER_ID = ? AND PROD_ID = ?",
 				 array(
