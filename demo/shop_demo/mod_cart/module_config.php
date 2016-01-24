@@ -1,7 +1,5 @@
 <?php
-	$view_index = array(
-		"default" => array("cart.php", "text/html")
-	);
+	$view_index = array();
 	
 	$class_index = array(
 		"CartEngine" => "CartEngine.class.php",

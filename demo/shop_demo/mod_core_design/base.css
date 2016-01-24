@@ -72,7 +72,7 @@ ul.tabs li a:hover {
 	display: inline-block;
 	float: left;
 	width: 6em;
-	height: 7em;
+	height: 8.5em;
 	border: 1px solid black;
 	margin: 0.5em;
 	background-color: rgba(255, 255, 255, 0.4);
@@ -83,7 +83,7 @@ ul.tabs li a:hover {
 	margin: 0.25em;
 	color: red;
 	position: absolute;
-	bottom: 1em;
+	top: 6.25em;
 	left: 0;
 	width: 100%;
 	white-space: nowrap;
@@ -105,7 +105,7 @@ ul.tabs li a:hover {
 
 .product_thumbnail img.ppic {
 	width: 5.7em;
-	margin: 0.15em auto;
+	max-height: 4.275em;
 	position: absolute;
 	top: 1.5em;
 	left: 0.15em;
@@ -115,7 +115,7 @@ ul.tabs li a:hover {
 	font-size: 0.6em;
 	margin: 0.25em;
 	position: absolute;
-	bottom: 0;
+	top: 12.5em;
 	right: 0;
 	width: 100%;
 	white-space: nowrap;
