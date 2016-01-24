@@ -7,19 +7,21 @@
 	if($res != FALSE) {
 		$arr[0] = TRUE;
 		foreach($res as $item) {
-			$item_info = $F->getProductDetails($item[0]);
+			$item_info = $F->getProductDetails($item["PROD_ID"]);
 			$tmp = array(
 				"PRODUCT_ID" => $item_info->getProductID(),
 				"PRODUCT_NAME" => $item_info->getProductName(),
 				"PRODUCT_PRICE" => $item_info->getProductPrice(),
-				"PRODUCT_QTY" => $item[1];
+				"PRODUCT_QTY" => $item["QTY"]
 			);
 			$arr[] = $tmp;
 		}
 		
+	} elseif($res == array()) {
+		$arr[0] = TRUE;
 	} else {
-		$arr[0] = $res;
+		$arr[0] = FALSE;
 	}
 	
-	echo json_encode($res);
+	echo json_encode($arr);
 ?>

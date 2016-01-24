@@ -1,4 +1,8 @@
 <?php
+	if(empty($_GET["t_mod"])) $_GET["t_mod"] = "";
+	if(empty($_GET["t_view"])) $_GET["t_view"] = "";
+	if(empty($_GET["loginfail"])) $_GET["loginfail"] = 0;
+	
 	$target = $_GET["t_mod"] !== "" ? "?mod=" . $_GET["t_mod"] . ($_GET["t_view"] !== "" ? "&view=" . $_GET["t_view"] : "") : ".";
 	/* if($_GET["t_mod"] !== "") {
 		$target = "?mod=" . $_GET["t_mod"];
