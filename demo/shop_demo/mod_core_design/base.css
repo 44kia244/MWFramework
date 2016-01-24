@@ -62,6 +62,73 @@ ul.tabs li a:hover {
 	background-color: rgba(0, 0, 0, 0.15);
 	height: 2em;
 }
+
 .space{
-	padding:0 0 0 0%
+	padding:0 0 0 0%;
+}
+
+.product_thumbnail {
+	position: relative;
+	display: inline-block;
+	float: left;
+	width: 6em;
+	height: 7em;
+	border: 1px solid black;
+	margin: 0.5em;
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+.product_thumbnail h6.pprice {
+	font-size: 0.9em;
+	margin: 0.25em;
+	color: red;
+	position: absolute;
+	bottom: 1em;
+	left: 0;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.product_thumbnail h6.pname {
+	font-size: 0.8em;
+	margin: 0.25em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.product_thumbnail img.ppic {
+	width: 5.7em;
+	margin: 0.15em auto;
+	position: absolute;
+	top: 1.5em;
+	left: 0.15em;
+}
+
+.product_thumbnail h6.INFO_LINK {
+	font-size: 0.6em;
+	margin: 0.25em;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: right;
+}
+
+div#ProductInfo img {
+	width: 90%;
+	margin: 5%;
+}
+
+div#ProductBox {
+	
 }
