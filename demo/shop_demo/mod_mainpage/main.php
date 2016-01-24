@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<?php MWF_ViewLoader::Load("mod_core_design", "headerbar"); ?>
-		<h1>Shop Demo Index Page</h1> 
+		<h1>Demo Shop</h1> 
 		
 		<div id="ProductBox">
 			<?php
