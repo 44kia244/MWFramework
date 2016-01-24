@@ -32,6 +32,7 @@
 		}
 		
 		public function editCart($pid,$qty){
+			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;	//If Not Logged in, Redirect page to login page
 			if($qty === 0) return return $this->delItemCart($pid);
 			$success = $this->DB->query("UPDATE cart SET QTY = ? WHERE USER_ID = ? AND PID = ?",
 				array(
@@ -44,6 +45,7 @@
 		}
 		
 		public function delItemCart($pid){
+			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;	//If Not Logged in, Redirect page to login page
 			$success = $this->DB->query("DELETE FROM cart WHERE USER_ID = ? AND PID = ?",
 				array(
 					array("i",$_SESSION["login"]["USER_ID"]),
@@ -54,6 +56,7 @@
 		}
 		
 		public function clearCart(){
+			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;	//If Not Logged in, Redirect page to login page
 			$success = $this->DB->query("DELETE FROM cart WHERE USER_ID = ?",
 				array(
 					array("i",$_SESSION["login"]["USER_ID"])
@@ -63,6 +66,7 @@
 		}
 		
 		public function isHasItem($pid) {
+			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;	//If Not Logged in, Redirect page to login page
 			$data = $this->DB->query("SELECT QTY FROM cart WHERE USER_ID = ? AND PROD_ID = ?",
 				 array(
 					array("i",$_SESSION["login"]["USER_ID"]),
@@ -74,8 +78,7 @@
 		}
 		
 		public function viewCart(){
-			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;
-			//No Login Data then redirect to login page
+			if(empty($_SESSION["login"]["USER_ID"])) return FALSE;	//If Not Logged in, Redirect page to login page
 			$data = $this->DB->query("SELECT PROD_ID,QTY FROM cart WHERE USER_ID = ?",
 				array(
 					array("i",$_SESSION["login"]["USER_ID"])
