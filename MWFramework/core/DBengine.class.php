@@ -17,22 +17,20 @@
 	****************************************************************************/
 ?>
 <?php
-	class DBengine {
-		// 
-		private $conn = NULL;
+	class DBengine extends MySQLi {
 		
 		/**
 			Class Construct : Connect to MySQL
 		*/
 		public function __construct() {
-			$this->conn = new mysqli(BaseConfiguration::$MySQL["host"], BaseConfiguration::$MySQL["user"], BaseConfiguration::$MySQL["pass"], BaseConfiguration::$MySQL["db"]);
+			parent::__construct(BaseConfiguration::$MySQL["host"], BaseConfiguration::$MySQL["user"], BaseConfiguration::$MySQL["pass"], BaseConfiguration::$MySQL["db"]);
 		}
 		
 		/**
 			Class Destruct (End Of Process) : Close Connection
 		*/
 		public function __destruct() {
-			$this->conn->close();
+			$this->close();
 		}
 		
 		/**
@@ -48,8 +46,8 @@
 				    )
 		*/
 		public function query($SQLquery, $SQLparam = array()) {
-			if ($this->conn->connect_errno) return FALSE;
-			if($stmt = $this->conn->prepare($SQLquery)) {
+			if ($this->connect_errno) return FALSE;
+			if($stmt = $this->prepare($SQLquery)) {
 				$type = "";
 				$param = array("Initialize");
 				for($i=0;$i<count($SQLparam);$i++) {
