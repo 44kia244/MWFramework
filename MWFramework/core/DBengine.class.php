@@ -19,6 +19,10 @@
 <?php
 	class DBengine extends MySQLi {
 		
+		public static $QUERY_RESULT_SUCCESS = 0;
+		public static $QUERY_ERROR_CANNOT_PREPARE = 1;
+		public static $QUERY_ERROR_QUERY_FAILED = 2;
+		
 		/**
 			Class Construct : Connect to MySQL
 		*/
@@ -59,15 +63,17 @@
 				if(count($SQLparam) > 0) call_user_func_array(array($stmt,"bind_param"),$param);
 				$exec_res = $stmt->execute();
 				$result = $stmt->get_result();
-				if($result == FALSE) return array(array($exec_res));
-				else {
+				if($result == FALSE) {
+					if($exec_res == TRUE) return self::$QUERY_RESULT_SUCCESS;
+					else return self::$QUERY_ERROR_QUERY_FAILED;
+				} else {
 					$return = array();
 					while ($row = $result->fetch_assoc()) {
 						$return[] = $row;
 					}
 					return $return;
 				}
-			} else return FALSE;
+			} else return self::$QUERY_ERROR_CANNOT_PREPARE;
 		}
 	}
 ?>
